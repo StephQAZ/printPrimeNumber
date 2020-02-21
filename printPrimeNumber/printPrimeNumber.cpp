@@ -10,18 +10,25 @@ using namespace std;
 //0：不是质数
 //1：是质数
 int checkPrimeNumber(int n) {
-	for (int i = 2; i <= sqrt(n); i++) {
-		if (n % i == 0) {
-			return 0;
-		}
+	if (n == 2) {
+		return 1;
 	}
-	return 1;
+	else if (n % 2 == 0) {
+		return 0;
+	}
+	else {
+		for (int i = 3; i < sqrt(n); i++) {
+			if (n % i == 0) {
+				return 0;
+			}
+		}
+		return 1;
+	}
 }
 
 int main()
 {
 	int totalNum = 100;
-
 	for (int i = 2; i < totalNum; i++) {
 		if (checkPrimeNumber(i)) {
 			cout << "the number is:" << i << endl;
